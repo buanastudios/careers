@@ -26,37 +26,41 @@ function Application() {
     navigate('/portal');
   };
 
-  if (!job) return <div className="container section">Memuat data pekerjaan...</div>;
+  if (!job) return <div className="container section" style={{ paddingTop: '120px' }}>Memuat data pekerjaan...</div>;
 
   return (
-    <div className="container section" style={{ maxWidth: '600px' }}>
-      <div className="card">
-        <h2 style={{ marginBottom: '0.5rem' }}>Lamar Posisi</h2>
-        <h3 style={{ color: 'var(--tibyan-royal)', marginBottom: '1.5rem' }}>{job.title}</h3>
+    <div className="container section animate-fade-in" style={{ maxWidth: '700px', paddingTop: '120px', minHeight: '80vh' }}>
+      <div className="card" style={{ padding: '3rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Kirim Aplikasi Anda</h2>
+          <p>Melamar untuk posisi <span style={{ color: 'var(--tibyan-royal)', fontWeight: 600 }}>{job.title}</span></p>
+        </div>
         
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Nama Lengkap</label>
+            <label className="input-label">Nama Lengkap</label>
             <input 
               type="text" 
               className="input-field" 
               required 
+              placeholder="Masukkan nama lengkap Anda"
               value={formData.name}
               onChange={e => setFormData({...formData, name: e.target.value})}
             />
           </div>
           <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Email</label>
+            <label className="input-label">Alamat Email</label>
             <input 
               type="email" 
               className="input-field" 
               required 
+              placeholder="nama@email.com"
               value={formData.email}
               onChange={e => setFormData({...formData, email: e.target.value})}
             />
           </div>
           <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Link Portfolio / Resume (Google Drive dll)</label>
+            <label className="input-label">Tautan Portfolio / Resume (Google Drive, LinkedIn, dsb)</label>
             <input 
               type="url" 
               className="input-field" 
@@ -67,16 +71,17 @@ function Application() {
             />
           </div>
           <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Surat Lamaran Singkat</label>
+            <label className="input-label">Surat Lamaran Singkat</label>
             <textarea 
               className="input-field" 
-              rows="4"
+              rows="5"
+              placeholder="Ceritakan mengapa Anda cocok untuk posisi ini..."
               value={formData.coverLetter}
               onChange={e => setFormData({...formData, coverLetter: e.target.value})}
             ></textarea>
           </div>
-          <button type="submit" className="btn btn-primary btn-full" disabled={submitting} style={{ marginTop: '1rem' }}>
-            {submitting ? 'Mengirim...' : 'Kirim Lamaran'}
+          <button type="submit" className="btn btn-primary btn-full" disabled={submitting} style={{ marginTop: '1rem', padding: '1.2rem' }}>
+            {submitting ? 'Mengirim Data...' : 'Kirim Aplikasi Sekarang'}
           </button>
         </form>
       </div>
