@@ -1,9 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Users, TrendingUp, Sparkles, Heart } from 'lucide-react';
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
 
 function Home() {
   return (
-    <div style={{ paddingTop: '80px' }}>
+    <motion.div initial="hidden" animate="visible" exit={{ opacity: 0 }} style={{ paddingTop: '80px' }}>
       {/* Hero Section */}
       <section className="section" style={{ 
         background: 'radial-gradient(circle at top right, #EFF6FF 0%, #F8FAFC 100%)',
@@ -18,65 +33,82 @@ function Home() {
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '400px', height: '400px', background: 'rgba(59, 130, 246, 0.1)', filter: 'blur(100px)', borderRadius: '50%' }}></div>
         <div style={{ position: 'absolute', bottom: '-10%', left: '-5%', width: '400px', height: '400px', background: 'rgba(249, 115, 22, 0.05)', filter: 'blur(100px)', borderRadius: '50%' }}></div>
 
-        <div className="container animate-fade-in" style={{ position: 'relative', zIndex: 10 }}>
-          <span style={{ display: 'inline-block', padding: '0.5rem 1rem', background: 'white', borderRadius: 'var(--radius-pill)', color: 'var(--tibyan-royal)', fontWeight: 600, fontSize: '0.9rem', marginBottom: '2rem', boxShadow: 'var(--shadow-sm)' }}>
-            ✨ Karir Baru Bersama Tibyan
-          </span>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', marginBottom: '1.5rem', maxWidth: '800px', margin: '0 auto 1.5rem', lineHeight: '1.1' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+          <motion.div variants={fadeIn}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1.2rem', background: 'white', borderRadius: 'var(--radius-pill)', color: 'var(--tibyan-royal)', fontWeight: 600, fontSize: '0.9rem', marginBottom: '2rem', boxShadow: 'var(--shadow-sm)' }}>
+              <Sparkles size={16} /> Karir Baru Bersama Tibyan
+            </span>
+          </motion.div>
+          
+          <motion.h1 variants={fadeIn} style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', marginBottom: '1.5rem', maxWidth: '800px', margin: '0 auto 1.5rem', lineHeight: '1.1' }}>
             Bantu Kami <span style={{ color: 'var(--tibyan-royal)' }}>Membangun Masa Depan</span>
-          </h1>
-          <p className="delay-1" style={{ maxWidth: '600px', margin: '0 auto 3rem', color: 'var(--tibyan-gray-500)', fontSize: '1.25rem', lineHeight: '1.6' }}>
+          </motion.h1>
+          
+          <motion.p variants={fadeIn} style={{ maxWidth: '600px', margin: '0 auto 3rem', color: 'var(--tibyan-gray-500)', fontSize: '1.25rem', lineHeight: '1.6' }}>
             Bergabunglah dengan Yayasan Tibyan dan jadilah bagian dari perubahan besar dalam dunia pendidikan dan sosial di Indonesia.
-          </p>
-          <div className="delay-2" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+          </motion.p>
+          
+          <motion.div variants={fadeIn} style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <Link to="/jobs" className="btn btn-primary" style={{ minWidth: '200px', padding: '1.2rem 2rem', fontSize: '1.1rem' }}>Eksplorasi Lowongan</Link>
             <Link to="/portal" className="btn btn-outline" style={{ minWidth: '200px', padding: '1.2rem 2rem', fontSize: '1.1rem', background: 'white' }}>Masuk Portal</Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Why Join Us */}
+      {/* Why Join Us - Bento Box Layout */}
       <section className="section" style={{ background: 'white', position: 'relative' }}>
-        <div className="container grid-responsive">
-          <div className="animate-fade-in delay-1">
-            <h2 className="premium-title" style={{ fontSize: '3rem', marginBottom: '1.5rem', lineHeight: 1.2 }}>Mengapa Bergabung<br/>dengan Tibyan?</h2>
-            <p style={{ fontSize: '1.2rem', lineHeight: 1.7, color: 'var(--tibyan-gray-500)' }}>
-              Kami bukan sekadar yayasan, kami adalah keluarga yang berdedikasi untuk menciptakan standar baru dalam pendidikan Islam yang modern dan inklusif. Kami menghargai setiap inovasi.
+        <div className="container">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn} style={{ marginBottom: '3rem' }}>
+            <h2 className="premium-title" style={{ fontSize: '3rem', marginBottom: '1rem', lineHeight: 1.2 }}>Mengapa Bergabung<br/>dengan Tibyan?</h2>
+            <p style={{ fontSize: '1.2rem', lineHeight: 1.7, color: 'var(--tibyan-gray-500)', maxWidth: '600px' }}>
+              Kami menciptakan standar baru dalam pendidikan Islam yang modern dan inklusif. Kami menghargai inovasi dan dedikasi.
             </p>
-          </div>
-          <div className="grid-responsive animate-fade-in delay-2" style={{ gap: '2rem' }}>
-            <div className="card">
-              <div style={{ width: '50px', height: '50px', background: 'var(--tibyan-royal-light)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                <span style={{ fontSize: '1.5rem' }}>🌱</span>
+          </motion.div>
+
+          <motion.div 
+            className="bento-grid" 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true, margin: "-100px" }} 
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeIn} className="card card-hover bento-large" style={{ background: 'linear-gradient(135deg, var(--tibyan-navy), #1e293b)', color: 'white' }}>
+              <div style={{ width: '60px', height: '60px', background: 'rgba(255,255,255,0.1)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 'auto' }}>
+                <Users size={32} color="var(--tibyan-gold)" />
               </div>
-              <h4>Lingkungan Positif</h4>
-              <p style={{ marginTop: '0.5rem' }}>Bekerja dengan rekan-rekan yang suportif dan visioner.</p>
-            </div>
-            <div className="card">
-              <div style={{ width: '50px', height: '50px', background: 'var(--tibyan-orange-light)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                <span style={{ fontSize: '1.5rem' }}>📈</span>
+              <div style={{ marginTop: '3rem' }}>
+                <h4 style={{ color: 'white', fontSize: '1.8rem', marginBottom: '0.5rem' }}>Lingkungan Positif</h4>
+                <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Bekerja dengan rekan-rekan yang suportif dan visioner dalam lingkungan yang Islami.</p>
+              </div>
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="card card-hover bento-wide">
+              <div style={{ width: '50px', height: '50px', background: 'var(--tibyan-orange-light)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                <TrendingUp size={24} color="var(--tibyan-orange)" />
               </div>
               <h4>Pengembangan Diri</h4>
-              <p style={{ marginTop: '0.5rem' }}>Pelatihan rutin dan kesempatan karir yang terbuka luas.</p>
-            </div>
-            <div className="card">
-              <div style={{ width: '50px', height: '50px', background: 'var(--tibyan-royal-light)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                <span style={{ fontSize: '1.5rem' }}>🏢</span>
+              <p style={{ marginTop: '0.5rem' }}>Pelatihan rutin dan kesempatan karir yang sangat terbuka luas bagi Anda.</p>
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="card card-hover bento-square">
+              <div style={{ width: '50px', height: '50px', background: 'var(--tibyan-royal-light)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                <Sparkles size={24} color="var(--tibyan-royal)" />
               </div>
               <h4>Fasilitas Modern</h4>
-              <p style={{ marginTop: '0.5rem' }}>Dukungan infrastruktur terbaik untuk menunjang performa Anda.</p>
-            </div>
-            <div className="card">
-              <div style={{ width: '50px', height: '50px', background: 'var(--tibyan-orange-light)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                <span style={{ fontSize: '1.5rem' }}>🤲</span>
+              <p style={{ marginTop: '0.5rem' }}>Infrastruktur terbaik untuk menunjang performa Anda.</p>
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="card card-hover bento-square">
+              <div style={{ width: '50px', height: '50px', background: 'var(--tibyan-green-light)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                <Heart size={24} color="var(--tibyan-green)" />
               </div>
               <h4>Misi Mulia</h4>
-              <p style={{ marginTop: '0.5rem' }}>Setiap pekerjaan Anda berkontribusi pada amal jariyah dan umat.</p>
-            </div>
-          </div>
+              <p style={{ marginTop: '0.5rem' }}>Berkontribusi pada amal jariyah umat.</p>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 }
 
