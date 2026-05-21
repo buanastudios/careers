@@ -59,9 +59,9 @@ function Home() {
       <section className="section" style={{ background: 'white', position: 'relative' }}>
         <div className="container">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn} style={{ marginBottom: '3rem' }}>
-            <h2 className="premium-title" style={{ fontSize: '3rem', marginBottom: '1rem', lineHeight: 1.2 }}>Mengapa Bergabung<br/>dengan Tibyan?</h2>
+            <h2 className="premium-title" style={{ fontSize: '3rem', marginBottom: '1rem', lineHeight: 1.2 }}>Mari Berjuang<br/>Bersama Tibyan</h2>
             <p style={{ fontSize: '1.2rem', lineHeight: 1.7, color: 'var(--tibyan-gray-500)', maxWidth: '600px' }}>
-              Kami menciptakan standar baru dalam pendidikan Islam yang modern dan inklusif. Kami menghargai inovasi dan dedikasi.
+              Kami bukanlah lembaga dengan fasilitas mewah, melainkan sebuah keluarga yang bergerak dalam kesederhanaan demi melayani umat. Kami membutuhkan keikhlasan dan kepedulian Anda.
             </p>
           </motion.div>
 
@@ -77,8 +77,8 @@ function Home() {
                 <Users size={32} color="var(--tibyan-gold)" />
               </div>
               <div style={{ marginTop: '3rem' }}>
-                <h4 style={{ color: 'white', fontSize: '1.8rem', marginBottom: '0.5rem' }}>Lingkungan Positif</h4>
-                <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Bekerja dengan rekan-rekan yang suportif dan visioner dalam lingkungan yang Islami.</p>
+                <h4 style={{ color: 'white', fontSize: '1.8rem', marginBottom: '0.5rem' }}>Lingkungan Keluarga</h4>
+                <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Bekerja bersama tim yang hangat, bersahabat, dan saling membimbing atas dasar ukhuwah Islamiyah.</p>
               </div>
             </motion.div>
 
@@ -86,24 +86,24 @@ function Home() {
               <div style={{ width: '50px', height: '50px', background: 'var(--tibyan-orange-light)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                 <TrendingUp size={24} color="var(--tibyan-orange)" />
               </div>
-              <h4>Pengembangan Diri</h4>
-              <p style={{ marginTop: '0.5rem' }}>Pelatihan rutin dan kesempatan karir yang sangat terbuka luas bagi Anda.</p>
+              <h4>Ladang Amal & Belajar</h4>
+              <p style={{ marginTop: '0.5rem' }}>Kesempatan mengamalkan ilmu secara nyata sekaligus terus belajar bersama meningkatkan ketakwaan.</p>
             </motion.div>
 
             <motion.div variants={fadeIn} className="card card-hover bento-square">
               <div style={{ width: '50px', height: '50px', background: 'var(--tibyan-royal-light)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                 <Sparkles size={24} color="var(--tibyan-royal)" />
               </div>
-              <h4>Fasilitas Modern</h4>
-              <p style={{ marginTop: '0.5rem' }}>Infrastruktur terbaik untuk menunjang performa Anda.</p>
+              <h4>Bahu-Membahu</h4>
+              <p style={{ marginTop: '0.5rem' }}>Meski dengan sarana yang sederhana, kami percaya ketulusan akan membuahkan berkah.</p>
             </motion.div>
 
             <motion.div variants={fadeIn} className="card card-hover bento-square">
               <div style={{ width: '50px', height: '50px', background: 'var(--tibyan-green-light)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                 <Heart size={24} color="var(--tibyan-green)" />
               </div>
-              <h4>Misi Mulia</h4>
-              <p style={{ marginTop: '0.5rem' }}>Berkontribusi pada amal jariyah umat.</p>
+              <h4>Pengabdian Tulus</h4>
+              <p style={{ marginTop: '0.5rem' }}>Fokus membantu pendidikan anak-anak dan pemberdayaan sosial di Bandung.</p>
             </motion.div>
           </motion.div>
         </div>
